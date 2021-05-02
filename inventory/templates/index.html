@@ -7,20 +7,21 @@
 
 <div class="button-group" style="padding: 0 50px">
 
-  <a class="btn btn-primary" href="#" role="button">Laptops</a>
+  <a class="btn btn-primary" href="{% url 'display_laptops' %}" role="button">Laptops</a>
   <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
 
-  <a href="#" class="btn btn-primary" role="button">Desktops</a>
+  <a href="{% url 'display_desktops' %}" class="btn btn-primary" role="button">Desktops</a>
   <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
 
-  <a href="#" class="btn btn-primary btn-md" role="button">Mobiles</a>
+  <a href="{% url 'display_mobiles' %}" class="btn btn-primary btn-md" role="button">Mobiles</a>
   <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
 
 </div>
 
 <br>
 
-<div class="table" style="padding: 0 50px">  
+<h4 style="padding: 0 50px">Currently Viewing {{ header }}</h4>
+<div class="table" style="padding: 0 50px">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -34,6 +35,18 @@
   </div>
 
   <tbody>
+
+    {% for item in items %}
+
+    <tr>
+      <td>{{ item.pk }}</td>
+      <td>{{ item.type }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.issues }}</td>
+    </tr>
+
+    {% endfor %}
 
   </tbody>
 </table>
