@@ -21,11 +21,11 @@ class Device(models.Model): # name of the table
     def __str__(self):
         return 'Type: {0} Price : {1}'.format(self.type, self.price)
 
-class Laptop(Device):
+class Laptops(Device):
     pass
 
-class Desktop(Device):
+class Desktops(Device):
     pass
 
-class Mobile(Device):
+class Mobiles(Device):
     pass

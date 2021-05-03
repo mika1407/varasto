@@ -4,15 +4,15 @@ from .models import *
 
 class LaptopForm(forms.ModelForm):
     class Meta:
-        model = Laptop
+        model = Laptops
         fields = ('type', 'price', 'status', 'issues')
 
 class DesktopForm(forms.ModelForm):
     class Meta:
-        model = Desktop
+        model = Desktops
         fields = ('type', 'price', 'status', 'issues')
 
 class MobileForm(forms.ModelForm):
     class Meta:
-        model = Mobile
+        model = Mobiles
         fields = ('type', 'price', 'status', 'issues')

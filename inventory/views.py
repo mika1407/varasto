@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 
@@ -7,26 +7,26 @@ def index(request):
     return render(request, 'index.html')
 
 def display_laptops(request):
-    items = Laptop.objects.all()
+    items = Laptops.objects.all()
     context = {
         'items' : items,
-        'header' : 'Laptops'
+        'header' : 'Laptops',
     }
     return render(request, 'index.html', context) # 3 arguments
 
 def display_desktops(request):
-    items = Desktop.objects.all()
+    items = Desktops.objects.all()
     context = {
         'items' : items,
-        'header' : 'Desktops'
+        'header' : 'Desktops',
     }
     return render(request, 'index.html', context) # 3 arguments
 
 def display_mobiles(request):
-    items = Mobile.objects.all()
+    items = Mobiles.objects.all()
     context = {
         'items' : items,
-        'header' : 'Mobiles'
+        'header' : 'Mobiles',
     }
     return render(request, 'index.html', context) # 3 arguments
 
@@ -49,6 +49,28 @@ def add_laptop(request):
 def add_desktop(request):
     return add_item(request, DesktopForm)
 
-
 def add_mobile(request):
     return add_item(request, MobileForm)
+
+
+def edit_item(request, pk, model, cls):
+    item = get_object_or_404(model, pk=pk)
+
+    if request.method == "POST":
+        form = cls(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = cls(instance=item)
+
+        return render(request, 'edit_item.html', {'form': form})
+
+def edit_laptop(request, pk):
+    return edit_item(request, pk, Laptops , LaptopForm)
+
+def edit_desktop(request, pk):
+    return edit_item(request, pk, Desktops, DesktopForm)
+
+def edit_mobile(request, pk):
+    return edit_item(request, pk, Mobiles, MobileForm)
