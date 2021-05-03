@@ -7,14 +7,14 @@
 
 <div class="button-group" style="padding: 0 50px">
 
-  <a class="btn btn-primary" href="{% url 'display_laptops' %}" role="button">Laptops</a>
-  <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
+  <a href="{% url 'display_laptops' %}" class="btn btn-primary" role="button">Laptops</a>
+  <a href="{% url 'add_laptop' %}" class="btn btn-warning btn-sm" role="button">+</a>
 
   <a href="{% url 'display_desktops' %}" class="btn btn-primary" role="button">Desktops</a>
-  <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
+  <a href="{% url 'add_desktop' %}" class="btn btn-warning btn-sm" role="button">+</a>
 
   <a href="{% url 'display_mobiles' %}" class="btn btn-primary btn-md" role="button">Mobiles</a>
-  <a href="#" class="btn btn-warning btn-sm" role="button">+</a>
+  <a href="{% url 'add_mobile' %}" class="btn btn-warning btn-sm" role="button">+</a>
 
 </div>
 
