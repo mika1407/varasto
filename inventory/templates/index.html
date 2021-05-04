@@ -47,14 +47,17 @@
       {% if header|lower == "laptops" %}
       <td>
         <a href="{% url 'edit_laptop' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">Edit</a>
+        <a href="{% url 'delete_laptop' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
       </td>
       {% elif header|lower == "desktops" %}
       <td>
         <a href="{% url 'edit_desktop' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">Edit</a>
+        <a href="{% url 'delete_desktop' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
       </td>
       {% else %}
       <td>
         <a href="{% url 'edit_mobile' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">Edit</a>
+        <a href="{% url 'delete_mobile' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
       </td>
       {% endif %}
     </tr>

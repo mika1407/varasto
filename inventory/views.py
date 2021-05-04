@@ -30,6 +30,7 @@ def display_mobiles(request):
     }
     return render(request, 'index.html', context) # 3 arguments
 
+#ADD
 def add_item(request, cls):
     if request.method == "POST":
         form = cls(request.POST)
@@ -52,7 +53,7 @@ def add_desktop(request):
 def add_mobile(request):
     return add_item(request, MobileForm)
 
-
+#Edit
 def edit_item(request, pk, model, cls):
     item = get_object_or_404(model, pk=pk)
 
@@ -74,3 +75,44 @@ def edit_desktop(request, pk):
 
 def edit_mobile(request, pk):
     return edit_item(request, pk, Mobiles, MobileForm)
+
+#Delete
+def delete_laptop(request, pk):
+
+    template = 'index.html'
+    Laptops.objects.filter(id=pk).delete()
+
+    items = Laptops.objects.all()
+
+    context = {
+        'items': items,
+    }
+
+    return render(request, template, context)
+
+def delete_desktop(request, pk):
+
+    template = 'index.html'
+    Desktops.objects.filter(id=pk).delete()
+
+    items = Desktops.objects.all()
+
+    context = {
+        'items': items,
+    }
+
+    return render(request, template, context)
+
+
+def delete_mobile(request, pk):
+
+    template = 'index.html'
+    Mobiles.objects.filter(id=pk).delete()
+
+    items = Mobiles.objects.all()
+
+    context = {
+        'items': items,
+    }
+
+    return render(request, template, context)
